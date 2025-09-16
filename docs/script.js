@@ -100,8 +100,10 @@ function evaluateSet(set) {
         role = "パグチ"; points += 1;
     }
 
-    let winCount = results.filter(r => r === "勝ち").length;
-    if (winCount > 0) points += winCount;
+    if (role === "") {
+        let winCount = results.filter(r => r === "勝ち").length;
+        if (winCount > 0) points += winCount;
+    }
 
     total += points;
     updateScore();
