@@ -62,7 +62,7 @@ function declareAiko() {
     if (aikoLeft <= 0) {
         aikoBtn.disabled = true;
     }
-    renderDeclareAikoEntry("Aiko宣言！次のじゃんけんで発動");
+    renderDeclareAikoEntry("Aiko宣言！少し背の高い〜♬");
 }
 
 function renderDeclareAikoEntry(text) {
@@ -94,23 +94,26 @@ function evaluateSet(set) {
         role = "勝ち3連単"; points += 4;
     } else if (hands.every(h => h === hands[0])) {
         role = "通常3連単"; points += 2;
-    } else if (results.every(r => r === "勝ち") && ["👊グー", "✌️チョキ", "🖐️パー"].every(h => hands.includes(h))) {
+    } else if (results.every(r => r === "勝ち") && ["👊 グー", "✌️ チョキ", "🖐️ パー"].every(h => hands.includes(h))) {
         role = "パグチひろこ"; points += 3;
-    } else if (["👊グー", "✌️チョキ", "🖐️パー"].every(h => hands.includes(h))) {
+    } else if (["👊 グー", "✌️ チョキ", "🖐️ パー"].every(h => hands.includes(h))) {
         role = "パグチ"; points += 1;
     }
 
-    let winCount = results.filter(r => r === "勝ち").length;
-    if (winCount > 0) points += winCount;
+    if (role === "") {
+        let winCount = results.filter(r => r === "勝ち").length;
+        if (winCount > 0) points += winCount;
+    }
 
     total += points;
-    updateScore();
-
+    
     let log = document.createElement("div");
     log.className = "setResult";
     log.innerHTML = `役: ${role || "なし"} / 獲得: ${points > 0 ? "+" + points : points} 点`;
     historyEl.appendChild(log);
     historyEl.scrollTop = historyEl.scrollHeight;
+
+    updateScore();
 }
 
 function renderEntry(entry) {
@@ -128,7 +131,7 @@ function updateScore() {
     if (total >= 10) {
         let div = document.createElement("div");
         div.className = "setResult";
-        div.textContent = "🎉 ゲームクリア！ 10点に到達しました！";
+        div.textContent = "🎉 10点に到達し勝利しました！";
         historyEl.appendChild(div);
         historyEl.scrollTop = historyEl.scrollHeight;
     }
