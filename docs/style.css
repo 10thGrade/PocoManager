@@ -151,3 +151,37 @@ button:hover:not(:disabled) {
     margin-left: 10px;
     flex: none;
 }
+
+@media (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .score {
+        font-size: 18px;
+    }
+
+    .buttons {
+        padding: 10px;
+    }
+
+    .hand-btn {
+        font-size: 24px;
+    }
+
+    .result-btn {
+        font-size: 14px;
+    }
+
+    .hand-btn, .result-btn {
+        padding: 10px;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
