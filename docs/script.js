@@ -62,7 +62,7 @@ function declareAiko() {
     if (aikoLeft <= 0) {
         aikoBtn.disabled = true;
     }
-    renderDeclareAikoEntry("Aiko宣言！次のじゃんけんで発動");
+    renderDeclareAikoEntry("Aiko宣言！少し背の高い〜♬");
 }
 
 function renderDeclareAikoEntry(text) {
@@ -131,7 +131,7 @@ function updateScore() {
     if (total >= 10) {
         let div = document.createElement("div");
         div.className = "setResult";
-        div.textContent = "🎉 ゲームクリア！ 10点に到達しました！";
+        div.textContent = "🎉 10点に到達し勝利しました！";
         historyEl.appendChild(div);
         historyEl.scrollTop = historyEl.scrollHeight;
     }
