@@ -106,13 +106,14 @@ function evaluateSet(set) {
     }
 
     total += points;
-    updateScore();
-
+    
     let log = document.createElement("div");
     log.className = "setResult";
     log.innerHTML = `役: ${role || "なし"} / 獲得: ${points > 0 ? "+" + points : points} 点`;
     historyEl.appendChild(log);
     historyEl.scrollTop = historyEl.scrollHeight;
+    
+    updateScore();
 }
 
 function renderEntry(entry) {
