@@ -11,7 +11,7 @@ let selectedHand = null;
 
 const resultButtons = document.querySelectorAll(".result-btn");
 const handButtons = document.querySelectorAll(".hand-btn");
-const aikoButton = document.querySelector(".aiko-info button");
+const aikoButton = document.querySelector(".aiko-panel button");
 
 // イベントリスナー設定
 
@@ -44,7 +44,7 @@ function selectResult(result) {
         }
         updateScore();
     }
-    
+
     if (result === "draw") {
         if (aikoPending) {
             total += 1;    // aiko宣言成功で+1点
@@ -80,7 +80,7 @@ function declareAiko() {
     aikoLeft--;
     aikoLeftEl.textContent = aikoLeft;
     if (aikoLeft <= 0) {
-        aikoBtn.disabled = true;
+        aikoButton.disabled = true;
     }
     renderResultEntry("dcl");
 }
