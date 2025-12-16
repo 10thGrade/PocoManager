@@ -20,7 +20,7 @@
     <header>
         <h1>✊✌️🖐️ Pocoスコアカウンター</h1>
         <div class="score">得点: <span id="total">0</span> 点</div>
-        <div class="aiko-info">
+        <div class="aiko-panel">
             Aiko宣言 残り <span id="aikoLeft">2</span> 回
             <button onclick="declareAiko()">宣言</button>
         </div>
@@ -30,14 +30,14 @@
 
     <div class="buttons">
         <div class="hand-buttons">
-            <button class="hand-btn gu" onclick="selectHand('👊 グー', this)">👊</button>
-            <button class="hand-btn choki" onclick="selectHand('✌️ チョキ', this)">✌️</button>
-            <button class="hand-btn pa" onclick="selectHand('🖐️ パー', this)">🖐️</button>
+            <button class="hand-btn gu" onclick="selectHand('gu', this)">👊</button>
+            <button class="hand-btn choki" onclick="selectHand('choki', this)">✌️</button>
+            <button class="hand-btn pa" onclick="selectHand('pa', this)">🖐️</button>
         </div>
         <div class="result-buttons">
-            <button class="result-btn win" onclick="selectResult('勝ち')" disabled>勝ち</button>
-            <button class="result-btn lose" onclick="selectResult('負け')" disabled>負け</button>
-            <button class="result-btn draw" onclick="selectResult('あいこ')" disabled>あいこ</button>
+            <button class="result-btn win" onclick="selectResult('win')" disabled>勝ち</button>
+            <button class="result-btn lose" onclick="selectResult('lose')" disabled>負け</button>
+            <button class="result-btn draw" onclick="selectResult('draw')" disabled>あいこ</button>
         </div>
     </div>
 
