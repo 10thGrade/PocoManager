@@ -43,7 +43,9 @@ function selectResult(result) {
             total = 0;
         }
         updateScore();
-    } else if (result === "draw") {
+    }
+    
+    if (result === "draw") {
         if (aikoPending) {
             total += 1;    // aiko宣言成功で+1点
             renderResultEntry("success");
@@ -55,11 +57,9 @@ function selectResult(result) {
         }
         return;
     } else if (aikoPending) {
-        if (aikoLeft > 0) {
-            total -= 2;    // aiko宣言失敗で-2点
-            if (total < 0) total = 0;
-            renderResultEntry("miss");
-        }
+        total -= 2;    // aiko宣言失敗で-2点
+        if (total < 0) total = 0;
+        renderResultEntry("miss");
         aikoPending = false;
         updateScore();
     }
