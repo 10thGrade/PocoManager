@@ -36,10 +36,17 @@ function selectResult(result) {
     handButtons.forEach(b => b.classList.remove("selected"));
     selectedHand = null;
 
-    if (result === "draw") {
+    if (result === "win") {
+        total += 1;    // じゃんけん勝利で+1点
+        renderResultEntry("win");
+        if (total < 0) {
+            total = 0;
+        }
+        updateScore();
+    } else if (result === "draw") {
         if (aikoPending) {
             total += 1;    // aiko宣言成功で+1点
-            renderAikoEntry("success");
+            renderResultEntry("success");
             if (total < 0) {
                 total = 0;
             }
@@ -51,7 +58,7 @@ function selectResult(result) {
         if (aikoLeft > 0) {
             total -= 2;    // aiko宣言失敗で-2点
             if (total < 0) total = 0;
-            renderAikoEntry("miss");
+            renderResultEntry("miss");
         }
         aikoPending = false;
         updateScore();
@@ -75,11 +82,11 @@ function declareAiko() {
     if (aikoLeft <= 0) {
         aikoBtn.disabled = true;
     }
-    renderAikoEntry("dcl");
+    renderResultEntry("dcl");
 }
 
 // aiko宣言関連描画
-function renderAikoEntry(act) {
+function renderResultEntry(act) {
     let div = document.createElement("div");
     if (act === "dcl") {
         div.className = "declareAiko";
@@ -93,6 +100,10 @@ function renderAikoEntry(act) {
     } else if (act === "miss") {
         div.className = "setResult";
         div.textContent = "Aiko失敗... / 獲得: -2 点";
+        div.style.color = "red";
+    } else if (act === "win") {
+        div.className = "setResult";
+        div.textContent = "じゃんけん勝利！ / 獲得: +1 点";
         div.style.color = "red";
     }
     historyEl.appendChild(div);
@@ -123,10 +134,6 @@ function evaluateSet(set) {
         role = "パグチ";
         points += 1;
     }
-
-    // TODO: 削除予定
-    let winCount = results.filter(r => r === "勝ち").length;
-    if (winCount > 0) points += winCount;
 
     total += points;
     
